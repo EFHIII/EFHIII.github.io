@@ -6,7 +6,7 @@ body{
 	width:120px;
 	height:60px;
 	font-size:30px;
-	background-color:FFFFFF;
+	background-color:#FFFFFF;
 }
 .butt{
 	width:25%;
@@ -35,5 +35,5 @@ body{
 	background-color:#AAAA00;
 }
 #br:hover{
-	background-color:FFFF33;
+	background-color:#FFFF33;
 }
