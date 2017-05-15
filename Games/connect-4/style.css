@@ -1,0 +1,23 @@
+body {
+  background-color: grey;
+  color: white;
+  text-align: center;
+  font-size: 3em;
+}
+
+#canvas {
+  margin: auto;
+  background-color: blue;
+}
+select {
+  border: solid;
+  font-size: 0.5em;
+  cursor:pointer;
+  border-radius:10px;
+}
+#p1{
+  background-color: red;
+}
+#p2{
+  background-color: yellow;
+}

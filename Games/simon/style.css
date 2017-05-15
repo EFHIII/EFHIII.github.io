@@ -1,0 +1,39 @@
+body{
+	text-align:Center;
+	background-color:#AAAAAA;
+}
+#start{
+	width:120px;
+	height:60px;
+	font-size:30px;
+	background-color:#FFFFFF;
+}
+.butt{
+	width:25%;
+	height:30%;
+    transition-duration: 0.1s;
+}
+#tl{
+	background-color:#AA0000;
+}
+#tl:hover{
+	background-color:#FF3333;
+}
+#tr{
+	background-color:#00AA00;
+}
+#tr:hover{
+	background-color:#33FF33;
+}
+#bl{
+	background-color:#0000AA;
+}
+#bl:hover{
+	background-color:3333FF;
+}
+#br{
+	background-color:#AAAA00;
+}
+#br:hover{
+	background-color:#FFFF33;
+}
