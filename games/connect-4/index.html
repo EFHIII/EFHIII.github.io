@@ -6,6 +6,7 @@
 <link rel="shortcut icon" href="favicon.ico">
 </head>
 <body>
+Max AI <input id="max ai" type="number" value="7" onChange="maxAI();">
 Width <input id="width" type="number" value=7 onChange="changeWidth();">
 Height <input id="height" type="number" value=6 onChange="changeHeight();"><br>
 <select id="p1" onClick="p1();">
@@ -605,6 +606,7 @@ canvas.addEventListener(
 );
 var P1 = document.getElementById("p1");
 var P2 = document.getElementById("p2");
+var maxai=document.getElementById("max ai");
 function p1() {
   clear();
   var v = P1.value;
@@ -612,11 +614,7 @@ function p1() {
     Red = [human, "You"];
   } else {
     Red = [AI, "The AI"];
-    for (var i = 1; i < 8; i++) {
-      if (v === "" + i) {
-        level[1] = i + 2;
-      }
-    }
+    level[1] = eval(v) + 2;
   }
 }
 function p2() {
@@ -626,16 +624,10 @@ function p2() {
     Yellow = [human, "You"];
   } else {
     Yellow = [AI, "The AI"];
-    for (var i = 1; i < 8; i++) {
-      if (v === "" + i) {
-        level[2] = i + 2;
-      }
-    }
+    level[2] = eval(v) + 2;
   }
 }
-P1.value="3";
-P2.value="3";
-p1();
+P2.value="4";
 p2();
 var Wth=document.getElementById("width");
 var Hht=document.getElementById("height");
@@ -651,6 +643,34 @@ function changeHeight(){
   game.height=Math.floor(Hht.value);
   clear();
 }
+
+function maxAI(){
+  if(maxai.value>7){
+    //try{
+    if(!confirm("AI greater than 7 could take a day or longer to calculate.")){
+      maxai.value=7;
+      return;
+    }
+    //}catch(e){};
+  }
+  var temp="<option value=\"Human\">Human</option>";
+  for(var i=1;i<=maxai.value;i++){
+    temp+="<option value=\""+i+"\">AI "+i+"</option>";
+  }
+  var temp2=["Human","Human"];
+  if(P1.value!=="Human"&&eval(P1.value)<=maxai.value){
+      temp2[0]=P1.value;
+  }
+  if(P2.value!=="Human"&&eval(P2.value)<=maxai.value){
+      temp2[1]=P2.value;
+  }
+  P1.innerHTML=temp;
+  P2.innerHTML=temp;
+  P1.value=temp2[0];
+  P2.value=temp2[1];
+  p1();
+  p2();
+};
 setInterval(draw,0);
 </script>
 </html>
