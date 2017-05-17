@@ -2,22 +2,52 @@ body {
   background-color: grey;
   color: white;
   text-align: center;
-  font-size: 3em;
+  font-size: 1.8em;
 }
 
 #canvas {
   margin: auto;
   background-color: blue;
 }
+
 select {
   border: solid;
-  font-size: 0.5em;
-  cursor:pointer;
-  border-radius:10px;
+  cursor: pointer;
+  border-radius: 10px;
+  font-size: 0.9em;
 }
-#p1{
+
+#p1 {
   background-color: red;
 }
-#p2{
+
+#p2 {
   background-color: yellow;
+}
+
+input {
+  text-align: center;
+  border: solid;
+  font-size: 0.7em;
+  border-radius: 10px;
+  width: 2em;
+}
+
+*:focus {
+  outline: none;
+}
+
+* {
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Safari */
+  -khtml-user-select: none;
+  /* Konqueror HTML */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
+  /* Non-prefixed version, currently supported by Chrome and Opera */
 }
