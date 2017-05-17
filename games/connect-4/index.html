@@ -431,7 +431,7 @@ var AI = function(board, player) {
     memory[player][2] = [[board, player, 0, level[player], -1]];
     memory[player][3] = 0;
   }
-  for (var i = 1000; i > 0; i--) {
+  for (var i = 100000; i > 0; i--) {
     if (memory[player][1](memory[player][2][memory[player][3]]) === "DONE") {
       i = 0;
     }
@@ -645,10 +645,10 @@ function changeHeight(){
 }
 
 function maxAI(){
-  if(maxai.value>7){
+  if(maxai.value>8){
     //try{
-    if(!confirm("AI greater than 7 could take an hour or longer to calculate.")){
-      maxai.value=7;
+    if(!confirm("AI greater than 8 could take an hour or longer to calculate.")){
+      maxai.value=8;
       return;
     }
     //}catch(e){};
