@@ -1,0 +1,157 @@
+body{
+    background-color:black;
+}
+
+div{
+    font-family:monospace;
+    color:#bbb;
+    margin:0;
+	word-wrap:break-word;
+}
+
+#out{
+	width:600px;
+	height:600px;
+	background-color:white;
+	vertical-align: top;
+}
+#debugWin{
+	width:calc(95vw - 600px);
+	height:calc(100vh - 5em);
+	background-color:black;
+}
+
+a{
+   color:lightgreen;
+}
+
+table {
+    margin: 1em 0;
+    background-color: #111;
+    border: 1px solid #444;
+    border-collapse: collapse;
+    color: #fff;
+}
+
+tr > th {
+    background-color: #222;
+    text-align: center;
+    border: 1px solid #444;
+    padding: 0.2em 0.4em;
+}
+td {
+    border: 1px solid #444;
+    padding: 0.2em 0.4em;
+}
+
+body::selection, div::selection{
+    background-color:white;
+    color:black;
+}
+
+textarea{
+	width:100%;
+	bottom:0;
+	background-color:black;
+	color:white;
+	resize:vertical;
+	overflow:scroll;
+	white-space:nowrap;
+	border-color:#555;
+}
+
+textarea::-webkit-scrollbar-track{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,1);
+	background-color: rgba(255,255,255,0.25);
+	border-radius: 5px;
+}
+textarea::-webkit-scrollbar{
+	width: 15px;
+	height: 15px;
+}
+textarea::-webkit-scrollbar-thumb{
+	background-color: #000;
+	border-radius: 5px;
+	background-image: -webkit-radial-gradient(rgba(0,0,0,1),#888);}
+
+#runner{
+	visibility:hidden;
+	position:fixed;
+}
+
+#reference{
+	visibility:hidden;
+	position:fixed;
+	padding:1em;
+}
+	
+#delayN{
+	position:fixed;
+	visibility:hidden;
+}
+
+#log, #inputLine{
+	color:white;
+}
+
+#alert{
+	font-style:italic;
+}
+
+#console-dragbar{
+	background-color:rgba(0,0,0,0);
+	position:absolute;
+	width:100%;
+	height:5px;
+	z-index:1;
+	cursor:row-resize;
+	visibility:hidden;
+}
+
+#console{
+	visibility:hidden;
+	position:fixed;
+	height:20vh;
+	bottom:0;
+	border-top-style:solid;
+	border-color:#888;
+	background-color:black;
+	color:white;
+	width:100vw;
+	left:0;
+	right:0;
+	font-family:monospace;
+	padding:0.2em;
+	overflow-y:scroll;
+}
+
+.stackV{
+	background-color:#555;
+	color:white;
+	padding:0.2em;
+	border-radius:0.3em;
+	margin:0.1em;
+}
+	
+.btn {
+    background: #fff none repeat scroll 0 0;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-shadow: 0 1px 0 #999 inset;
+    color: #000;
+    cursor: pointer;
+    display: inline-block;
+    line-height: 1;
+    padding: 0.7em 1em;
+    text-align: center;
+    transition: background 0s ease 0s, all 0.3s ease 0s, all 0s ease 0s;
+	margin:0.1em;
+}
+
+.btn:hover {
+    background: #ddd;
+}
+
+*:focus {
+  outline: none;
+}
