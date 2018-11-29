@@ -207,6 +207,16 @@ function B98(bfCode){
 		';':function(that,pointer){
 			pointer.pos.x+=pointer.delta.x;
 			pointer.pos.y+=pointer.delta.y;
+			if(pointer.pos.y<0||pointer.pos.y>=that.field.length||pointer.pos.x<0||pointer.pos.x>=that.field[pointer.pos.y].length){
+				pointer.pos.x-=pointer.delta.x;
+				pointer.pos.y-=pointer.delta.y;
+				while(pointer.pos.y>=0&&pointer.pos.y<that.field.length&&pointer.pos.x>=0&&pointer.pos.x<that.field[pointer.pos.y].length){
+					pointer.pos.x-=pointer.delta.x;
+					pointer.pos.y-=pointer.delta.y;
+				}
+				pointer.pos.x+=pointer.delta.x;
+				pointer.pos.y+=pointer.delta.y;
+			}
 			while(pointer.pos.y>=0&&pointer.pos.y<that.field.length&&pointer.pos.x>=0&&pointer.pos.x<that.field[pointer.pos.y].length&&that.field[pointer.pos.y][pointer.pos.x]!=';'){
 				pointer.pos.x+=pointer.delta.x;
 				pointer.pos.y+=pointer.delta.y;
