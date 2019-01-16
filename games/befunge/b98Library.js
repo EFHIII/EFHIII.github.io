@@ -918,7 +918,7 @@ function B98(bfCode,canvas){
 				let y=that.popStack(pointer);
 				let x=that.popStack(pointer);
 				that.ctx.beginPath();
-				that.ctx.arc(x, y, r, b, e / 180 * Math.PI, true);
+				that.ctx.arc(x, y, r, b/ 180 * Math.PI, e / 180 * Math.PI, true);
 				that.ctx.fill();
 				that.ctx.stroke();
 			},
@@ -936,15 +936,18 @@ function B98(bfCode,canvas){
 			},
 			D:function(that,pointer){pointer.delta.x*=-1;pointer.delta.y*=-1;},
 			E:function(that,pointer){
-				let r=that.popStack(pointer);
 				let h=that.popStack(pointer);
 				let w=that.popStack(pointer);
 				let y=that.popStack(pointer);
 				let x=that.popStack(pointer);
 				that.ctx.beginPath();
-				that.ctx.arc(x, y, r, 0, 2 * Math.PI, true);
+				that.ctx.save();
+				that.ctx.translate(x,y);
+				that.ctx.scale(1,h/w);
+				that.ctx.arc(0,0, w/2, 0, 2 * Math.PI, true);
 				that.ctx.fill();
 				that.ctx.stroke();
+				that.ctx.restore();
 			},
 			F:function(that,pointer){
 				let c='';
