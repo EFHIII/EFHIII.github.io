@@ -84,6 +84,36 @@ textarea::-webkit-scrollbar-thumb{
 	position:fixed;
 	padding:1em;
 }
+
+#NULL{
+	visibility:hidden;
+	position:fixed;
+	padding:1em;
+}
+
+#HRTI{
+	visibility:hidden;
+	position:fixed;
+	padding:1em;
+}
+
+#MODU{
+	visibility:hidden;
+	position:fixed;
+	padding:1em;
+}
+
+#ROMA{
+	visibility:hidden;
+	position:fixed;
+	padding:1em;
+}
+
+#DRAW{
+	visibility:hidden;
+	position:fixed;
+	padding:1em;
+}
 	
 #delayN{
 	position:fixed;

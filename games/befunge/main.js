@@ -8,11 +8,12 @@ ctx.noStroke = true;
 
 let canvas2 = document.getElementById('out');
 
-let W2 = canvas2.width;
+/*let W2 = canvas2.width;
 let H2 = canvas2.height;
 let ctx2 = canvas2.getContext("2d");
 ctx2.lineCap = "round";
 ctx2.noStroke = true;
+*/
 //mouse stuff
 let mouseIsPressed = false;
 let mouse = {
@@ -86,6 +87,11 @@ canvas.addEventListener("mousewheel",
 
 let code=document.getElementById('code');
 let ref=document.getElementById('reference');
+let ref1=document.getElementById('NULL');
+let ref2=document.getElementById('HRTI');
+let ref3=document.getElementById('MODU');
+let ref4=document.getElementById('ROMA');
+let ref5=document.getElementById('DRAW');
 let editor=document.getElementById('editor');
 let runner=document.getElementById('runner');
 let delay=document.getElementById('delayN');
@@ -104,6 +110,8 @@ let befungeLoop=false;
 let showCanvas=false;
 let showCode=true;
 let showConsole=true;
+
+const abc="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ\\][=-0987654321`/.,';?><\":|}{+_)(*&^%$#@!~| ";
 
 function step(){
 	befungeProgram.step();
@@ -154,11 +162,16 @@ function fun(){
 			}
 			ctx.fillRect(X,Y,0.48,0.98);
 			ctx.fillStyle='white';
-			if(befungeProgram.field[i][j]>0||befungeProgram.field[i][j]=='0'||befungeProgram.field[i][j]<0){
+			if(befungeProgram.field[i][j]>0||befungeProgram.field[i][j]=='0'||befungeProgram.field[i][j]<0||abc.indexOf(befungeProgram.field[i][j])<0){
 				ctx.fillStyle='#fa5';
 				if(befungeProgram.field[i][j]>9||befungeProgram.field[i][j]<0){
 					ctx.font = "0.1px monospace";
 					ctx.fillText(befungeProgram.field[i][j],X+0.24,Y+0.55);
+					ctx.font = "0.9px monospace";
+				}
+				else if(abc.indexOf(befungeProgram.field[i][j])<0){
+					ctx.font = "0.1px monospace";
+					ctx.fillText(befungeProgram.field[i][j].charCodeAt(0),X+0.24,Y+0.55);
 					ctx.font = "0.9px monospace";
 				}
 				else{
@@ -328,9 +341,60 @@ document.getElementById('ref').addEventListener('click',function(){
 		ref.style.position='relative';
 	}
 });
+document.getElementById('ref1').addEventListener('click',function(){
+	if(ref1.style.visibility=='visible'){
+		ref1.style.visibility='hidden';
+		ref1.style.position='fixed';
+	}
+	else{
+		ref1.style.visibility='visible';
+		ref1.style.position='relative';
+	}
+});
+document.getElementById('ref2').addEventListener('click',function(){
+	if(ref2.style.visibility=='visible'){
+		ref2.style.visibility='hidden';
+		ref2.style.position='fixed';
+	}
+	else{
+		ref2.style.visibility='visible';
+		ref2.style.position='relative';
+	}
+});
+document.getElementById('ref3').addEventListener('click',function(){
+	if(ref3.style.visibility=='visible'){
+		ref3.style.visibility='hidden';
+		ref3.style.position='fixed';
+	}
+	else{
+		ref3.style.visibility='visible';
+		ref3.style.position='relative';
+	}
+});
+document.getElementById('ref4').addEventListener('click',function(){
+	if(ref4.style.visibility=='visible'){
+		ref4.style.visibility='hidden';
+		ref4.style.position='fixed';
+	}
+	else{
+		ref4.style.visibility='visible';
+		ref4.style.position='relative';
+	}
+});
+document.getElementById('ref5').addEventListener('click',function(){
+	if(ref5.style.visibility=='visible'){
+		ref5.style.visibility='hidden';
+		ref5.style.position='fixed';
+	}
+	else{
+		ref5.style.visibility='visible';
+		ref5.style.position='relative';
+	}
+});
 document.getElementById('run').addEventListener('click',function(){
-	canvas2.style.visibility='hidden';
 	canvas2.style.position='fixed';
+	canvas2.style.visibility='hidden';
+	document.getElementById('showCanvas').innerText='Show Canvas';
 	canvas.style.width='98vw';
 	showCanvas=false;
 	W = canvas.width = canvas.offsetWidth;
@@ -339,10 +403,20 @@ document.getElementById('run').addEventListener('click',function(){
 	editor.style.visibility='hidden';
 	editor.style.position='fixed';
 	ref.style.visibility='hidden';
+	ref1.style.visibility='hidden';
+	ref2.style.visibility='hidden';
+	ref3.style.visibility='hidden';
+	ref4.style.visibility='hidden';
+	ref5.style.visibility='hidden';
 	ref.style.position='fixed';
+	ref1.style.position='fixed';
+	ref2.style.position='fixed';
+	ref3.style.position='fixed';
+	ref4.style.position='fixed';
+	ref5.style.position='fixed';
 	runner.style.visibility='visible';
 	runner.style.position='relative';
-	befungeProgram=new B98(code.value);
+	befungeProgram=new B98(code.value,canvas2);
 	camera={x:0,y:0,size:Math.min(W/befungeProgram.field[0].length*2,H/befungeProgram.field.length)};
 	log.innerText='';
 	inputLine.innerText='';
@@ -360,11 +434,19 @@ document.getElementById('edit').addEventListener('click',function(){
 		runIt.innerText='Run';
 		clearInterval(befungeLoop);
 	}
+	
+	canvas2.removeEventListener("mousemove",B98mousemove);
+	canvas2.removeEventListener("mousedown",B98mousedown);
+	canvas2.removeEventListener("mouseup",B98mouseup);
+	canvas2.removeEventListener("mouseout",B98mouseout);
+	canvas2.removeEventListener("mousewheel",B98mousewheel);
+	
 	befungeProgram=false;
 	delay.style.visibility='hidden';
 	delay.style.position='fixed';
 	delaying=false;
 	deConsole.style.visibility='hidden';
+	canvas2.style.visibility='hidden';
 });
 document.getElementById('delay').addEventListener('click',function(){
 	if(delay.style.visibility=='visible'){

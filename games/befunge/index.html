@@ -10,7 +10,7 @@
 	<div id='editor'>
 	<button id='run' class='btn'>Run</button><br>
 	<textArea rows='15' placeholder='Befunge Code' spellcheck=false id='code'></textArea><br>
-	<button id='ref' class='btn'>Reference</button>
+	<button id='ref' class='btn'>Reference</button><button id='ref1' class='btn'>NULL</button><button id='ref2' class='btn'>HRTI</button><button id='ref3' class='btn'>MODU</button><button id='ref4' class='btn'>ROMA</button><button id='ref5' class='btn'>DRAW</button>
 	<div id='reference'>
 	<a href='https://esolangs.org/wiki/Funge-98'>esolangs.org/wiki/Funge-98</a>
 	<table>
@@ -798,13 +798,450 @@
 	</tbody>
 	</table>
 	</div>
+	<div id='NULL'>
+	<h3>NULL - Makes A-Z reflect</h3>
+	<table>
+	<tbody><tr>
+	<th>ASCII
+	</th>
+	<th>Instruction
+	</th>
+	<th>Before
+	</th>
+	<th>After
+	</th>
+	<th>Other Effects
+	</th></tr>
+	</tbody>
+	</table>
+	</div>
+	<div id='HRTI'>
+	<h3>HRTI - High-Resolution Timer Interface</h3>
+	<table>
+	<tbody><tr>
+	<th>ASCII
+	</th>
+	<th>Instruction
+	</th>
+	<th>Before
+	</th>
+	<th>After
+	</th>
+	<th>Other Effects
+	</th></tr>
+	<tr>
+	<td><code>G    </code>
+	</td>
+	<td>Granularity
+	</td>
+	<td>
+	</td>
+	<td>20000
+	</td>
+	<td>Pushes the smallest clock tick the underlying system can reliable handle measured in microseconds
+	</td></tr>
+	<tr>
+	<td><code>M    </code>
+	</td>
+	<td>Mark
+	</td>
+	<td>
+	</td>
+	<td>
+	</td>
+	<td>Designates the timer as having been read by the IP with this ID at this instance
+	</td></tr>
+	<tr>
+	<td><code>T    </code>
+	</td>
+	<td>Timer
+	</td>
+	<td>
+	</td>
+	<td># of microseconds since the last M
+	</td>
+	<td>reflects if there is no mark on the timer
+	</td></tr>
+	<tr>
+	<td><code>E    </code>
+	</td>
+	<td>Erase mark
+	</td>
+	<td>
+	</td>
+	<td>
+	</td>
+	<td>erases the last time the timer mark by this IP (such that <code>T</code> will reflect)
+	</td></tr>
+	<tr>
+	<td><code>S    </code>
+	</td>
+	<td>Seconds
+	</td>
+	<td>
+	</td>
+	<td># of microseconds elapsed since the last whole second (time MOD 1 second)
+	</td>
+	<td>
+	</td></tr>
+	</tbody>
+	</table>
+	</div>
+	<div id='MODU'>
+	<h3>MODU - Modulo Arithmetic Extension</h3>
+	<table>
+	<tbody><tr>
+	<th>ASCII
+	</th>
+	<th>Instruction
+	</th>
+	<th>Before
+	</th>
+	<th>After
+	</th>
+	<th>Other Effects
+	</th></tr>
+	<tr>
+	<td><code>M    </code>
+	</td>
+	<td>signed-result modulo
+	</td>
+	<td>a b
+	</td>
+	<td>a MOD b
+	</td>
+	<td>
+	</td></tr>
+	<td><code>U    </code>
+	</td>
+	<td>unsigned-result modulo
+	</td>
+	<td>a b
+	</td>
+	<td>a MOD b
+	</td>
+	<td>
+	</td></tr>
+	<td><code>R    </code>
+	</td>
+	<td>integer remainder
+	</td>
+	<td>a b
+	</td>
+	<td>a MOD b
+	</td>
+	<td>
+	</td></tr>
+	</tbody>
+	</table>
+	</div>
+	<div id='ROMA'>
+	<h3>ROMA - Roman Numerals</h3>
+	<table>
+	<tbody><tr>
+	<th>ASCII
+	</th>
+	<th>Instruction
+	</th>
+	<th>Before
+	</th>
+	<th>After
+	</th>
+	<th>Other Effects
+	</th></tr>
+	<tr>
+	<td><code>I    </code>
+	</td>
+	<td>one
+	</td>
+	<td>
+	</td>
+	<td>1
+	</td>
+	<td>
+	</td></tr>
+	<tr>
+	<td><code>V    </code>
+	</td>
+	<td>five
+	</td>
+	<td>
+	</td>
+	<td>5
+	</td>
+	<td>
+	</td></tr>
+	<tr>
+	<td><code>X    </code>
+	</td>
+	<td>ten
+	</td>
+	<td>
+	</td>
+	<td>10
+	</td>
+	<td>
+	</td></tr>
+	<tr>
+	<td><code>L    </code>
+	</td>
+	<td>fifty
+	</td>
+	<td>
+	</td>
+	<td>50
+	</td>
+	<td>
+	</td></tr>
+	<tr>
+	<td><code>C    </code>
+	</td>
+	<td>one-hundred
+	</td>
+	<td>
+	</td>
+	<td>100
+	</td>
+	<td>
+	</td></tr>
+	<tr>
+	<td><code>D    </code>
+	</td>
+	<td>five-hundred
+	</td>
+	<td>
+	</td>
+	<td>500
+	</td>
+	<td>
+	</td></tr>
+	<tr>
+	<td><code>M    </code>
+	</td>
+	<td>one-thousand
+	</td>
+	<td>
+	</td>
+	<td>1000
+	</td>
+	<td>
+	</td></tr>
+	</tbody>
+	</table>
+	</div>
+	<div id='DRAW'>
+	<h3>DRAW - Canvas Drawing Functions</h3>
+	<table>
+	<tbody><tr>
+	<th>ASCII
+	</th>
+	<th>Instruction
+	</th>
+	<th>Before
+	</th>
+	<th>After
+	</th>
+	<th>Other Effects
+	</th></tr>
+	<tr>
+	<td><code>D    </code>
+	</td>
+	<td>Draw everything
+	</td>
+	<td>
+	</td>
+	<td>
+	</td>
+	<td>updates the canvas
+	</td></tr>
+	<tr>
+	<td><code>A    </code>
+	</td>
+	<td>Arc
+	</td>
+	<td>x y radius start stop
+	</td>
+	<td>
+	</td>
+	<td>
+	</td></tr>
+	<tr>
+	<td><code>C    </code>
+	</td>
+	<td>Circle
+	</td>
+	<td>x y radius
+	</td>
+	<td>
+	</td>
+	<td>
+	</td></tr>
+	<tr>
+	<td><code>E    </code>
+	</td>
+	<td>Ellipse
+	</td>
+	<td>x y width height radius
+	</td>
+	<td>
+	</td>
+	<td>
+	</td></tr>
+	<tr>
+	<td><code>R    </code>
+	</td>
+	<td>Rectangle
+	</td>
+	<td>x y width height
+	</td>
+	<td>
+	</td>
+	<td>
+	</td></tr>
+	<tr>
+	<td><code>P    </code>
+	</td>
+	<td>Point
+	</td>
+	<td>x y
+	</td>
+	<td>
+	</td>
+	<td>single point (size of stroke)
+	</td></tr>
+	<tr>
+	<td><code>O    </code>
+	</td>
+	<td>Shape
+	</td>
+	<td>[x y]* # of verticies
+	</td>
+	<td>
+	</td>
+	<td>suffix 3 coordinates with <code>0</code> to make it a bezier (starting at the proceding vertex)<br>draws in order from top of stack down
+	</td></tr>
+	<tr>
+	<td><code>T    </code>
+	</td>
+	<td>Transform
+	</td>
+	<td>(x y)/ (degrees)/ (x y) - mode(1/2/3)
+	</td>
+	<td>
+	</td>
+	<td>scale(1)/ rotate(2)/ translate(3) pops a value and does the coresponding transformation
+	</td></tr>
+	<tr>
+	<td><code>M    </code>
+	</td>
+	<td>Push/Pop Matrix
+	</td>
+	<td>push?
+	</td>
+	<td>
+	</td>
+	<td>push the current transformation matrix if 1 else pops to the last saved matrix
+	</td></tr>
+	<tr>
+	<td><code>B    </code>
+	</td>
+	<td>Background
+	</td>
+	<td>r g b a* #
+	</td>
+	<td>
+	</td>
+	<td>fills the whole screen with a popped color
+	</td></tr>
+	<tr>
+	<td><code>F    </code>
+	</td>
+	<td>Fill
+	</td>
+	<td>r g b a* #
+	</td>
+	<td>
+	</td>
+	<td>3,4,6, or 8 digit hex code followed by 3, 4, 6, or 8
+	</td></tr>
+	<tr>
+	<td><code>S    </code>
+	</td>
+	<td>Stroke
+	</td>
+	<td>r g b a* # thickness
+	</td>
+	<td>
+	</td>
+	<td>3,4,6, or 8 digit hex code followed by 3, 4, 6, or 8
+	</td></tr>
+	<tr>
+	<td><code>W    </code>
+	</td>
+	<td>Width
+	</td>
+	<td>
+	</td>
+	<td>Canvas width
+	</td>
+	<td>
+	</td></tr>
+	<tr>
+	<td><code>H    </code>
+	</td>
+	<td>Height
+	</td>
+	<td>
+	</td>
+	<td>Canvas height
+	</td>
+	<td>
+	</td></tr>
+	<tr>
+	<td><code>U    </code>
+	</td>
+	<td>Mouse User-Input
+	</td>
+	<td>
+	</td>
+	<td>x y mouse-button (0-3)
+	</td>
+	<td>pushes the coordinates of the mouse and if the left/middle/right buttons are pressed
+	</td></tr>
+	<tr>
+	<td><code>L    </code>
+	</td>
+	<td>Last Mouse User-Input
+	</td>
+	<td>
+	</td>
+	<td>x y
+	</td>
+	<td>pushes the last coordinates of the mouse
+	</td></tr>
+	<tr>
+	<td><code>K    </code>
+	</td>
+	<td>Keyboard
+	</td>
+	<td>key*
+	</td>
+	<td>key pressed / ([keys] # of keys pressed)
+	</td>
+	<td>pops a value- if > 0, pushes 1 for pressed, 0 for not pressed else pushes all pressed keys followed by # of keys pressed
+	</td></tr>
+	</tbody>
+	</table>
+	
+	</div>
+	</div>
 	</div>
 	<div id='runner'>
 	<button id='edit' class='btn'>Edit</button><button id='runIt' class='btn'>Run</button><button id='delay' class='btn'>Delay</button><input id='delayN' type="number" name="Delay" min="0" max="1000" step="10" value="50"><button id='step' class='btn'>Step</button><button id='reset' class='btn'>Reset</button><button id='showConsole' class='btn'>Hide Console</button><button id='showCanvas' class='btn'>Show Canvas</button><button id='showCode' class='btn'>hide code</button><br>
 	<canvas id='debugWin'></canvas><canvas id='out'></canvas>
 	<div id='console-dragbar'></div>
 	<div id='console'>
-	<div id='log'>here's some text<br>ddf<br>ddf<br>ddf<br>ddf<br>ddf<br>ddf<br>ddf<br>ddf<br>ddf<br>ddf<br>ddf<br>ddf<br>ddf<br>ddf<br>ddf<br>ddf<br>ddf<br>ddf<br>ddf<br>ddf<br>ddf</div>
+	<div id='log'>Loading . . .<br>ddf<br>ddf<br>ddf<br>ddf<br>ddf<br>ddf<br>ddf<br>ddf<br>ddf<br>ddf<br>ddf<br>ddf<br>ddf<br>ddf<br>ddf<br>ddf<br>ddf<br>ddf<br>ddf<br>ddf<br>ddf</div>
 	<div id='alert'></div>
 	><span id='inputLine' contenteditable=true></span><br>
 	Stack: <span id='stack'></span>
