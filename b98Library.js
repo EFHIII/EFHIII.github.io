@@ -5,16 +5,16 @@ TODO:
 
 let B98canvas;
 
-function B98getMousePos(canvas, evt) {
-  let rect = canvas.getBoundingClientRect();
+function B98getMousePos(evt) {
+  let rect = B98canvas.getBoundingClientRect();
   return {
-	x: evt.clientX - rect.left,
-	y: evt.clientY - rect.top
+	x: evt.clientX - rect.x,
+	y: evt.clientY - rect.y
   };
 }
 
 function B98mousemove(evt) {
-	let MS = B98getMousePos(canvas, evt);
+	let MS = B98getMousePos(evt);
 	B98canvas.mouse.x=MS.x;
 	B98canvas.mouse.y=MS.y;
 }
@@ -60,7 +60,7 @@ function B98Field(bfCode){
 };
 function B98(bfCode,canvas){
 	B98canvas=canvas?canvas:false;
-	
+	this.draw=false;
 	if(canvas){
 		B98canvas.W = 0;
 		B98canvas.H = 0;
@@ -83,7 +83,7 @@ function B98(bfCode,canvas){
 		B98canvas.H = canvas.height = canvas.offsetHeight;
 		this.ctx = canvas.getContext("2d");
 		this.ctx.lineCap = "round";
-		this.ctx.strokeStyle = "#0000";
+		this.ctx.strokeStyle = "rgba(0,0,0,0)";
 		this.ctx.fillStyle = "#F00";
 		
 		B98canvas.addEventListener("mousemove",B98mousemove,false);
@@ -934,7 +934,9 @@ function B98(bfCode,canvas){
 				that.ctx.fill();
 				that.ctx.stroke();
 			},
-			D:function(that,pointer){pointer.delta.x*=-1;pointer.delta.y*=-1;},
+			D:function(that,pointer){
+				that.draw=true;
+			},
 			E:function(that,pointer){
 				let h=that.popStack(pointer);
 				let w=that.popStack(pointer);
@@ -962,14 +964,14 @@ function B98(bfCode,canvas){
 			},
 				//G:function(that,pointer){pointer.delta.x*=-1;pointer.delta.y*=-1;},
 			H:function(that,pointer){
-				that.stack.push(B98canvas.height);
+				pointer.stack.push(B98canvas.height);
 			},
 				//I:function(that,pointer){pointer.delta.x*=-1;pointer.delta.y*=-1;},
 				//J:function(that,pointer){pointer.delta.x*=-1;pointer.delta.y*=-1;},
 			K:function(that,pointer){pointer.delta.x*=-1;pointer.delta.y*=-1;},
 			L:function(that,pointer){
-				that.stack.push(B98canvas.pmouse.x);
-				that.stack.push(B98canvas.pmouse.y);
+				pointer.stack.push(B98canvas.pmouse.x);
+				pointer.stack.push(B98canvas.pmouse.y);
 			},
 			M:function(that,pointer){
 				if(that.popStack(pointer)){
@@ -1025,13 +1027,13 @@ function B98(bfCode,canvas){
 				}
 			},
 			U:function(that,pointer){
-				that.stack.push(B98canvas.mouse.x);
-				that.stack.push(B98canvas.mouse.y);
-				that.stack.push(B98canvas.mouse.button);
+				pointer.stack.push(B98canvas.mouse.x);
+				pointer.stack.push(B98canvas.mouse.y);
+				pointer.stack.push(B98canvas.mouse.button);
 			},
 				//V:function(that,pointer){pointer.delta.x*=-1;pointer.delta.y*=-1;},
 			W:function(that,pointer){
-				that.stack.push(B98canvas.width);
+				pointer.stack.push(B98canvas.width);
 			},
 				//X:function(that,pointer){pointer.delta.x*=-1;pointer.delta.y*=-1;},
 				//Y:function(that,pointer){pointer.delta.x*=-1;pointer.delta.y*=-1;},
@@ -1051,7 +1053,7 @@ B98.prototype.reset=function(){
 			this.ctx.restore();
 		}
 		this.ctx.lineCap = "round";
-		this.ctx.strokeStyle = "#0000";
+		this.ctx.strokeStyle = "rgba(0,0,0,0)";
 		this.ctx.fillStyle = "#FFF";
 		this.ctx.fillRect(0,0,B98canvas.width,B98canvas.height);
 		this.ctx.fillStyle = "#F00";
