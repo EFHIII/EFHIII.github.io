@@ -16,6 +16,8 @@ function getUrlParam(parameter, defaultvalue){
 
 let canvas = document.getElementById('debugWin');
 
+let isFirefox = (typeof InstallTrigger !== 'undefined')?0.25:0;
+
 let W = canvas.width;
 let H = canvas.height;
 let ctx = canvas.getContext("2d");
@@ -183,7 +185,7 @@ function fun(){
 	}
 	
 	//ctx.font = Math.round(camera.size/4)+"px Arial";
-	ctx.font = "0.9px monospace";
+	ctx.font = "bold 0.05em Courier";
 	ctx.textAlign = "center";
 	ctx.save();
 	ctx.scale(camera.size,camera.size);
@@ -208,16 +210,16 @@ function fun(){
 				ctx.fillStyle='#fa5';
 				if(befungeProgram.field[i][j]>9||befungeProgram.field[i][j]<0){
 					ctx.font = "0.1px monospace";
-					ctx.fillText(befungeProgram.field[i][j],X+0.24,Y+0.55);
+					ctx.fillText(befungeProgram.field[i][j],X+0.24+isFirefox,Y+0.55);
 					ctx.font = "0.9px monospace";
 				}
 				else if(abc.indexOf(befungeProgram.field[i][j])<0){
 					ctx.font = "0.1px monospace";
-					ctx.fillText(befungeProgram.field[i][j].charCodeAt(0),X+0.24,Y+0.55);
+					ctx.fillText(befungeProgram.field[i][j].charCodeAt(0),X+0.24+isFirefox,Y+0.55);
 					ctx.font = "0.9px monospace";
 				}
 				else{
-					ctx.fillText(befungeProgram.field[i][j],X+0.24,Y+0.75);
+					ctx.fillText(befungeProgram.field[i][j],X+0.24+isFirefox,Y+0.75);
 				}
 			}
 			else{
@@ -303,7 +305,7 @@ function fun(){
 						ctx.fillStyle='#fcf';
 					break;
 				}
-				ctx.fillText(befungeProgram.field[i][j],X+0.24,Y+0.75);
+				ctx.fillText(befungeProgram.field[i][j],X+0.24+isFirefox,Y+0.75);
 			}
 			}
 		}
