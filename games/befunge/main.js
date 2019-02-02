@@ -1,4 +1,22 @@
+function getUrlVars() {
+    var vars = {};
+    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+        vars[key] = value;
+    });
+    return vars;
+}
+
+function getUrlParam(parameter, defaultvalue){
+    var urlparameter = defaultvalue;
+    if(window.location.href.indexOf(parameter) > -1){
+        urlparameter = decodeURI(getUrlVars()[parameter]);
+        }
+    return urlparameter;
+}
+
 let canvas = document.getElementById('debugWin');
+
+let isFirefox = (typeof InstallTrigger !== 'undefined')?0.25:0;
 
 let W = canvas.width;
 let H = canvas.height;
@@ -7,6 +25,9 @@ ctx.lineCap = "round";
 ctx.noStroke = true;
 
 let canvas2 = document.getElementById('out');
+
+canvas2.style.width = getUrlParam('width',600)+'px';
+canvas2.style.height = getUrlParam('height',600)+'px';
 
 /*let W2 = canvas2.width;
 let H2 = canvas2.height;
@@ -129,11 +150,18 @@ v                     <
 */
 code.value="                  v\nv,kc\"Hello World!\"<\n>3j ED\"WARD\" 4(v\nv   B F3000    <\n>ff0 3F aa3** : : Cv\nv                  <\n>000 3F aa2** : a5* aa* Ev\nv                        <\n>a95** aa2** a5* aa* Ev\nv                     <\n>1M f00 3F aa3** aa4** 3T 3 2 1T 0 0 f3* 594** 0 A 0M )@";
 
+
+let setCode=getUrlParam('code',false);
+if(setCode){
+	code.value=setCode;
+}
+
 function step(){
 	befungeProgram.step();
 };
 function fastStep(){
-	for(let i=0;i<1000;i++){
+	befungeProgram.draw=false;
+	for(let i=0;i<10000&&!befungeProgram.draw;i++){
 		befungeProgram.step();
 	}
 };
@@ -157,7 +185,7 @@ function fun(){
 	}
 	
 	//ctx.font = Math.round(camera.size/4)+"px Arial";
-	ctx.font = "0.9px monospace";
+	ctx.font = "bold 0.05em Courier";
 	ctx.textAlign = "center";
 	ctx.save();
 	ctx.scale(camera.size,camera.size);
@@ -181,17 +209,21 @@ function fun(){
 			if(befungeProgram.field[i][j]>0||befungeProgram.field[i][j]=='0'||befungeProgram.field[i][j]<0||abc.indexOf(befungeProgram.field[i][j])<0){
 				ctx.fillStyle='#fa5';
 				if(befungeProgram.field[i][j]>9||befungeProgram.field[i][j]<0){
-					ctx.font = "0.1px monospace";
-					ctx.fillText(befungeProgram.field[i][j],X+0.24,Y+0.55);
-					ctx.font = "0.9px monospace";
+					//ctx.font = "0.1px monospace";
+					ctx.font = "bold 0.01em Courier";
+					ctx.fillText(befungeProgram.field[i][j],X+0.24+isFirefox,Y+0.55);
+					//ctx.font = "0.9px monospace";
+					ctx.font = "bold 0.05em Courier";
 				}
 				else if(abc.indexOf(befungeProgram.field[i][j])<0){
-					ctx.font = "0.1px monospace";
-					ctx.fillText(befungeProgram.field[i][j].charCodeAt(0),X+0.24,Y+0.55);
-					ctx.font = "0.9px monospace";
+					//ctx.font = "0.1px monospace";
+					ctx.font = "bold 0.01em Courier";
+					ctx.fillText(befungeProgram.field[i][j].charCodeAt(0),X+0.24+isFirefox,Y+0.55);
+					//ctx.font = "0.9px monospace";
+					ctx.font = "bold 0.05em Courier";
 				}
 				else{
-					ctx.fillText(befungeProgram.field[i][j],X+0.24,Y+0.75);
+					ctx.fillText(befungeProgram.field[i][j],X+0.24+isFirefox,Y+0.75);
 				}
 			}
 			else{
@@ -277,7 +309,7 @@ function fun(){
 						ctx.fillStyle='#fcf';
 					break;
 				}
-				ctx.fillText(befungeProgram.field[i][j],X+0.24,Y+0.75);
+				ctx.fillText(befungeProgram.field[i][j],X+0.24+isFirefox,Y+0.75);
 			}
 			}
 		}
@@ -538,7 +570,7 @@ document.getElementById('showCanvas').addEventListener('click',function(){
 		document.getElementById('showCanvas').innerText='Hide Canvas';
 		canvas2.style.visibility='visible';
 		canvas2.style.position='relative';
-		canvas.style.width='calc(95vw - 600px)';
+		canvas.style.width='calc(95vw - '+canvas2.width+'px)';
 		showCanvas=true;
 	}
 });

@@ -5,16 +5,33 @@ TODO:
 
 let B98canvas;
 
-function B98getMousePos(canvas, evt) {
-  let rect = canvas.getBoundingClientRect();
+var qrDecompose = function(a) {
+  var angle = Math.atan2(a[1], a[0]),
+      denom = Math.pow(a[0], 2) + Math.pow(a[1], 2),
+      scaleX = Math.sqrt(denom),
+      scaleY = (a[0] * a[3] - a[2] * a[1]) / scaleX,
+      skewX = Math.atan2(a[0] * a[2] + a[1] * a[3], denom);
   return {
-	x: evt.clientX - rect.left,
-	y: evt.clientY - rect.top
+    angle: angle ,   // this is rotation angle
+    scaleX: scaleX,  // scaleX factor  
+    scaleY: scaleY,  // scaleY factor
+    skewX: skewX ,   // skewX angle (Skew currently not acounted for in mouse)
+    skewY: 0,        // skewY angle
+    translateX: a[4],// translation point  x
+    translateY: a[5] // translation point  y
+  };
+};
+
+function B98getMousePos(evt) {
+  let rect = B98canvas.getBoundingClientRect();
+  return {
+	x: evt.clientX - rect.x,
+	y: evt.clientY - rect.y
   };
 }
 
 function B98mousemove(evt) {
-	let MS = B98getMousePos(canvas, evt);
+	let MS = B98getMousePos(evt);
 	B98canvas.mouse.x=MS.x;
 	B98canvas.mouse.y=MS.y;
 }
@@ -60,7 +77,7 @@ function B98Field(bfCode){
 };
 function B98(bfCode,canvas){
 	B98canvas=canvas?canvas:false;
-	
+	this.draw=false;
 	if(canvas){
 		B98canvas.W = 0;
 		B98canvas.H = 0;
@@ -83,7 +100,7 @@ function B98(bfCode,canvas){
 		B98canvas.H = canvas.height = canvas.offsetHeight;
 		this.ctx = canvas.getContext("2d");
 		this.ctx.lineCap = "round";
-		this.ctx.strokeStyle = "#0000";
+		this.ctx.strokeStyle = "rgba(0,0,0,0)";
 		this.ctx.fillStyle = "#F00";
 		
 		B98canvas.addEventListener("mousemove",B98mousemove,false);
@@ -934,7 +951,9 @@ function B98(bfCode,canvas){
 				that.ctx.fill();
 				that.ctx.stroke();
 			},
-			D:function(that,pointer){pointer.delta.x*=-1;pointer.delta.y*=-1;},
+			D:function(that,pointer){
+				that.draw=true;
+			},
 			E:function(that,pointer){
 				let h=that.popStack(pointer);
 				let w=that.popStack(pointer);
@@ -962,14 +981,16 @@ function B98(bfCode,canvas){
 			},
 				//G:function(that,pointer){pointer.delta.x*=-1;pointer.delta.y*=-1;},
 			H:function(that,pointer){
-				that.stack.push(B98canvas.height);
+				pointer.stack.push(B98canvas.height);
 			},
 				//I:function(that,pointer){pointer.delta.x*=-1;pointer.delta.y*=-1;},
 				//J:function(that,pointer){pointer.delta.x*=-1;pointer.delta.y*=-1;},
 			K:function(that,pointer){pointer.delta.x*=-1;pointer.delta.y*=-1;},
 			L:function(that,pointer){
-				that.stack.push(B98canvas.pmouse.x);
-				that.stack.push(B98canvas.pmouse.y);
+				var a=that.ctx.getTransform();
+				var qr=qrDecompose([a.a,a.b,a.c,a.d,a.e,a.f]);
+				pointer.stack.push((Math.cos( qr.angle)*(B98canvas.pmouse.x-qr.translateX)+Math.sin( qr.angle)*(B98canvas.pmouse.y-qr.translateY))/qr.scaleX);
+				pointer.stack.push((Math.cos(-qr.angle)*(B98canvas.pmouse.y-qr.translateY)+Math.sin(-qr.angle)*(B98canvas.pmouse.x-qr.translateX))/qr.scaleY);
 			},
 			M:function(that,pointer){
 				if(that.popStack(pointer)){
@@ -1013,8 +1034,11 @@ function B98(bfCode,canvas){
 			T:function(that,pointer){
 				switch(that.popStack(pointer)){
 					case(1):
-						var temp=that.popStack(pointer);
-						that.ctx.scale(that.popStack(pointer),temp);
+						var d=that.popStack(pointer);
+						var c=that.popStack(pointer);
+						var b=that.popStack(pointer);
+						var a=that.popStack(pointer);
+						that.ctx.scale(a/b,c/d);
 					break;
 					case(2):
 						that.ctx.rotate(that.popStack(pointer)/180*Math.PI);
@@ -1025,13 +1049,15 @@ function B98(bfCode,canvas){
 				}
 			},
 			U:function(that,pointer){
-				that.stack.push(B98canvas.mouse.x);
-				that.stack.push(B98canvas.mouse.y);
-				that.stack.push(B98canvas.mouse.button);
+				var a=that.ctx.getTransform();
+				var qr=qrDecompose([a.a,a.b,a.c,a.d,a.e,a.f]);
+				pointer.stack.push((Math.cos( qr.angle)*(B98canvas.mouse.x-qr.translateX)+Math.sin( qr.angle)*(B98canvas.mouse.y-qr.translateY))/qr.scaleX);
+				pointer.stack.push((Math.cos(-qr.angle)*(B98canvas.mouse.y-qr.translateY)+Math.sin(-qr.angle)*(B98canvas.mouse.x-qr.translateX))/qr.scaleY);
+				pointer.stack.push(B98canvas.mouse.button);
 			},
 				//V:function(that,pointer){pointer.delta.x*=-1;pointer.delta.y*=-1;},
 			W:function(that,pointer){
-				that.stack.push(B98canvas.width);
+				pointer.stack.push(B98canvas.width);
 			},
 				//X:function(that,pointer){pointer.delta.x*=-1;pointer.delta.y*=-1;},
 				//Y:function(that,pointer){pointer.delta.x*=-1;pointer.delta.y*=-1;},
@@ -1051,7 +1077,7 @@ B98.prototype.reset=function(){
 			this.ctx.restore();
 		}
 		this.ctx.lineCap = "round";
-		this.ctx.strokeStyle = "#0000";
+		this.ctx.strokeStyle = "rgba(0,0,0,0)";
 		this.ctx.fillStyle = "#FFF";
 		this.ctx.fillRect(0,0,B98canvas.width,B98canvas.height);
 		this.ctx.fillStyle = "#F00";
