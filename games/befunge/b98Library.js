@@ -39,12 +39,13 @@ function B98mousemove(evt) {
 function B98mousedown(e) {
 	B98canvas.mouseIsPressed = true;
 	B98canvas.last = false;
-	B98canvas.mouse.button=e.button;
+	B98canvas.mouse.button=e.button+1;
 }
 
 function B98mouseup() {
 	B98canvas.mouseIsPressed = false;
 	B98canvas.last=true;
+	B98canvas.mouse.button=0;
 }
 
 function B98mouseout() {
@@ -1023,6 +1024,7 @@ function B98(bfCode,canvas){
 			S:function(that,pointer){
 				let c='';
 				var a=[];
+				that.ctx.lineWidth=that.popStack(pointer);
 				for(let i=that.popStack(pointer);i>0;i--){
 					a.push(that.popStack(pointer));
 				}

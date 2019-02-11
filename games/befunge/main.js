@@ -136,9 +136,7 @@ const abc="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ\\][=-0987654321`
 /*
                   v
 v,kc"Hello World!"<
-
 >3j ED"WARD" 4(v
-
 v   B F3000    <
 >ff0 3F aa3** : : Cv
 v                  <
@@ -146,9 +144,10 @@ v                  <
 v                        <
 >a95** aa2** a5* aa* Ev
 v                     <
->1M f00 3F aa3** aa4** 3T 3 2 1T 0 0 f3* 594** 0 A 0M )@
+>1M f00 3F aa3** aa4** 3T 31 21 1T 0 0 f3* 594** 0 A 0M )@
 */
-code.value="                  v\nv,kc\"Hello World!\"<\n>3j ED\"WARD\" 4(v\nv   B F3000    <\n>ff0 3F aa3** : : Cv\nv                  <\n>000 3F aa2** : a5* aa* Ev\nv                        <\n>a95** aa2** a5* aa* Ev\nv                     <\n>1M f00 3F aa3** aa4** 3T 3 2 1T 0 0 f3* 594** 0 A 0M )@";
+code.value="                  v\nv,kc\"Hello World!\"<\n>3j ED\"WARD\" 4(v\nv   B F3000    <\n>ff0 3F aa3** : : Cv\nv                  <\n>000 3F aa2** : a5* aa* Ev\nv                        <\n>a95** aa2** a5* aa* Ev\nv                     <\n>1M f00 3F aa3** aa4** 3T 31 21 1T 0 0 f3* 594** 0 A 0M )@";
+//code.value="                  v\nv,kc\"Hello World!\"<\n>3j ED\"WARD\" 4(v\nv   B F3000    <\n>ff0 3F aa3** : : Cv\nv                  <\n>000 3F aa2** : a5* aa* Ev\nv                        <\n>a95** aa2** a5* aa* Ev\nv                     <\n>1M f00 3F aa3** aa4** 3T 3 2 1T 0 0 f3* 594** 0 A 0M )@";
 
 
 let setCode=getUrlParam('code',false);
