@@ -1,3 +1,4 @@
+[Link to editor](http://efhiii.github.io/games/befunge)
 # Javascript Befunge Interpreter and Editor
 ## Editor
 ![editor image](https://i.imgur.com/ms81Bms.png)
@@ -46,3 +47,7 @@ The DRAW fingerprint is unique to this interpreter, and will (most likely) not w
 [esolangs.org/wiki/Funge-98](https://esolangs.org/wiki/Funge-98)
 
 [Befunge-98 Specification](https://github.com/catseye/Funge-98/blob/master/doc/funge98.markdown)
+
+[Link to editor](http://efhiii.github.io/games/befunge)
+
+[Link to fullscreen runner (only for graphical programs)](https://efhiii.github.io/games/befunge/befungerunner)
