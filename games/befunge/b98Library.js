@@ -1,9 +1,12 @@
 /*
 TODO:
-- implement fingerprints
+- fix any remaining bugs/inconsistancies
+- make cross platform compatable
 */
 
 let B98canvas;
+
+let keys={};
 
 var qrDecompose = function(a) {
   var angle = Math.atan2(a[1], a[0]),
@@ -58,6 +61,20 @@ function B98mouseout() {
 function B98mousewheel(e){
 	B98canvas.mouse.wheel=Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
 }
+
+function B98keyDown(e){
+	keys[e.keyCode]=true;
+	const mobileInput = document.querySelector('.mobile-input input');
+	if (mobileInput!==null){
+		mobileInput.value='';
+	}
+}
+function B98keyUp(e){
+	keys[e.keyCode]=false;
+}
+
+document.body.addEventListener("keydown",B98keyDown,false);
+document.body.addEventListener("keyup",B98keyUp,false);
 
 function B98Field(bfCode){
 	let bfc=bfCode.split('\n');
@@ -560,7 +577,7 @@ function B98(bfCode,canvas){
 					that.field[i].push(' ');
 				}
 			}
-			let putting=that.popStack(pointer);
+			let putting=Math.trunc(that.popStack(pointer));
 			if(putting>=0&&putting<65536){
 				putting=String.fromCharCode(putting);
 			}
@@ -986,7 +1003,27 @@ function B98(bfCode,canvas){
 			},
 				//I:function(that,pointer){pointer.delta.x*=-1;pointer.delta.y*=-1;},
 				//J:function(that,pointer){pointer.delta.x*=-1;pointer.delta.y*=-1;},
-			K:function(that,pointer){pointer.delta.x*=-1;pointer.delta.y*=-1;},
+			K:function(that,pointer){
+				let key=that.popStack(pointer);
+				if(key){
+					if(keys.hasOwnProperty(key)&&keys[key]){
+						pointer.stack.push(1);
+					}
+					else{
+						pointer.stack.push(0);
+					}
+				}
+				else{
+					let KEYS=0;
+					for(var KEY in keys){
+						if(keys[KEY]){
+							pointer.stack.push(KEY);
+							KEYS++;
+						}
+					}
+					pointer.stack.push(KEYS);
+				}
+			},
 			L:function(that,pointer){
 				var a=that.ctx.getTransform();
 				var qr=qrDecompose([a.a,a.b,a.c,a.d,a.e,a.f]);
