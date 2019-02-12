@@ -56,7 +56,7 @@ textarea{
 	color:white;
 	resize:vertical;
 	overflow:scroll;
-	white-space:nowrap;
+	white-space:pre-wrap;
 	border-color:#555;
 }
 
