@@ -2,11 +2,14 @@
 TODO:
 - fix any remaining bugs/inconsistancies
 - make cross platform compatable
+- remove getTransform
 */
 
 let B98canvas;
 
 let keys={};
+
+var GETTRANSFORM=true;
 
 var qrDecompose = function(a) {
   var angle = Math.atan2(a[1], a[0]),
@@ -120,6 +123,9 @@ function B98(bfCode,canvas){
 		this.ctx.lineCap = "round";
 		this.ctx.strokeStyle = "rgba(0,0,0,0)";
 		this.ctx.fillStyle = "#F00";
+		if(!this.ctx.hasOwnProperty('getTransform')){
+			GETTRANSFORM=false;
+		}
 		
 		B98canvas.addEventListener("mousemove",B98mousemove,false);
 		B98canvas.addEventListener("mousedown",B98mousedown,false);
@@ -1025,10 +1031,16 @@ function B98(bfCode,canvas){
 				}
 			},
 			L:function(that,pointer){
-				var a=that.ctx.getTransform();
-				var qr=qrDecompose([a.a,a.b,a.c,a.d,a.e,a.f]);
-				pointer.stack.push((Math.cos( qr.angle)*(B98canvas.pmouse.x-qr.translateX)+Math.sin( qr.angle)*(B98canvas.pmouse.y-qr.translateY))/qr.scaleX);
-				pointer.stack.push((Math.cos(-qr.angle)*(B98canvas.pmouse.y-qr.translateY)+Math.sin(-qr.angle)*(B98canvas.pmouse.x-qr.translateX))/qr.scaleY);
+				if(GETTRANSFORM){
+					var a=that.ctx.getTransform();
+					var qr=qrDecompose([a.a,a.b,a.c,a.d,a.e,a.f]);
+					pointer.stack.push((Math.cos( qr.angle)*(B98canvas.pmouse.x-qr.translateX)+Math.sin( qr.angle)*(B98canvas.pmouse.y-qr.translateY))/qr.scaleX);
+					pointer.stack.push((Math.cos(-qr.angle)*(B98canvas.pmouse.y-qr.translateY)+Math.sin(-qr.angle)*(B98canvas.pmouse.x-qr.translateX))/qr.scaleY);
+				}
+				else{
+					pointer.stack.push(B98canvas.pmouse.y);
+					pointer.stack.push(B98canvas.pmouse.x);
+				}
 			},
 			M:function(that,pointer){
 				if(that.popStack(pointer)){
@@ -1088,10 +1100,16 @@ function B98(bfCode,canvas){
 				}
 			},
 			U:function(that,pointer){
-				var a=that.ctx.getTransform();
-				var qr=qrDecompose([a.a,a.b,a.c,a.d,a.e,a.f]);
-				pointer.stack.push((Math.cos( qr.angle)*(B98canvas.mouse.x-qr.translateX)+Math.sin( qr.angle)*(B98canvas.mouse.y-qr.translateY))/qr.scaleX);
-				pointer.stack.push((Math.cos(-qr.angle)*(B98canvas.mouse.y-qr.translateY)+Math.sin(-qr.angle)*(B98canvas.mouse.x-qr.translateX))/qr.scaleY);
+				if(GETTRANSFORM){
+					var a=that.ctx.getTransform();
+					var qr=qrDecompose([a.a,a.b,a.c,a.d,a.e,a.f]);
+					pointer.stack.push((Math.cos( qr.angle)*(B98canvas.mouse.x-qr.translateX)+Math.sin( qr.angle)*(B98canvas.mouse.y-qr.translateY))/qr.scaleX);
+					pointer.stack.push((Math.cos(-qr.angle)*(B98canvas.mouse.y-qr.translateY)+Math.sin(-qr.angle)*(B98canvas.mouse.x-qr.translateX))/qr.scaleY);
+				}
+				else{
+					pointer.stack.push(B98canvas.mouse.y);
+					pointer.stack.push(B98canvas.mouse.x);
+				}
 				pointer.stack.push(B98canvas.mouse.button);
 			},
 				//V:function(that,pointer){pointer.delta.x*=-1;pointer.delta.y*=-1;},
