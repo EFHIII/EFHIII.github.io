@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Encrypt</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
+    <style media="screen">
+      ::placeholder {
+        color: #abc;
+        opacity: 1;
+      }
+      body {
+        background-color:#222830;
+        color:#aaa;
+      }
+      input, textarea {
+        background-color:#fff1;
+        color:#fff;
+        border-color:#000;
+        border-width:1px;
+        border-style:solid;
+      }
+      hr {
+        border-width:0;
+        height:2px;
+        color:#aaa;
+        background-color:#aaa;
+      }
+    </style>
+  </head>
+  <input id="key" type="text" name="key" placeholder="key"> <button onclick="enc()">Encrypt</button><button onclick="dec()">Decrypt</button><hr>
+  <textarea id="in" name="name" rows="8" cols="80" placeholder="code"></textarea><hr>
+  <textarea id="out" name="name" rows="8" cols="80" placeholder="encrypted"></textarea>
+  <body>
+    <script type="text/javascript">
+      function enc(){
+        document.getElementById('out').value = CryptoJS.AES.encrypt(document.getElementById('in').value,document.getElementById('key').value).toString();
+      }
+      function dec(){
+        if(document.getElementById('out').value.length == 0){return;}
+        document.getElementById('in').value = CryptoJS.AES.decrypt(document.getElementById('out').value,document.getElementById('key').value).toString(CryptoJS.enc.Utf8);
+      }
+    </script>
+  </body>
+</html>
