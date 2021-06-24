@@ -34,7 +34,7 @@
   <body>
     <script type="text/javascript">
       function enc(){
-        document.getElementById('out').value = CryptoJS.AES.encrypt(document.getElementById('in').value,document.getElementById('key').value).toString();
+        document.getElementById('out').value = CryptoJS.AES.encrypt(document.getElementById('in').value,document.getElementById('key').value).toString().replace(/=+/,'');
       }
       function dec(){
         if(document.getElementById('out').value.length == 0){return;}
