@@ -1,89 +1,106 @@
 <html>
+
 <head>
-<title>Simon Flash</title>
-<link rel="stylesheet" type="text/css" href="style.css">
-<link rel="shortcut icon" href="favicon.ico">
+  <title>Simon Flash</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="shortcut icon" href="favicon.ico">
 </head>
+
 <body>
-<h1>Simon Flash</h1>
-<h2 id="score">Score: 0</h2>
-<h2 id="high">High Score: 0</h2>
-<button onclick="start();" type="button" id="start">Start</button><br>
-<button onclick="choose(0);" type="button" class="butt" id="tl"></button><button onclick="choose(1);" type="button" class="butt" id="tr"></button><br>
-<button onclick="choose(2);" type="button" class="butt" id="bl"></button><button onclick="choose(3);" type="button" class="butt" id="br"></button>
+  <h1>Simon Flash</h1>
+  <h2 id="score">Score: 0</h2>
+  <h2 id="high">High Score: 0</h2>
+  <button onclick="start();" type="button" id="start">Start</button><br>
+  <button onclick="choose(0);" type="button" class="butt" id="tl"></button><button onclick="choose(1);" type="button" class="butt" id="tr"></button><br>
+  <button onclick="choose(2);" type="button" class="butt" id="bl"></button><button onclick="choose(3);" type="button" class="butt" id="br"></button>
 
-<script>
-var sequence=false;
-var high=0;
-var score=0;
-var at=0;
-var on=0;
-var backnforth=1;
-var buf="";
-var scorehtml=document.getElementById("score");
-var highhtml=document.getElementById("high");
-var starthtml=document.getElementById("start");
-var btns=[document.getElementById("tl"),document.getElementById("tr"),document.getElementById("bl"),document.getElementById("br")];
-var colors=["#FF3333","33FF33","3333FF","FFFF33"];
-function adds(){
-	sequence.push(Math.floor(Math.random()*4));
-	at=0;
-	on=0;
-};
-function showNext(){
-	backnforth*=-1;
-	if(!sequence){return;}
-	if(backnforth==1){
-		if(at>0&&at<=sequence.length){
-			btns[sequence[at-1]].style=buf;
-		}
-	}
-	else{
-		if(at>=0&&at<sequence.length){
-			buf=btns[sequence[at]].style;
-			btns[sequence[at]].style="background-color:"+colors[sequence[at]];
-		}
-		at++;
-	}
-};
-function start(){
-	if(!sequence){
-		starthtml.innerHTML="Restart";
-	}
-	sequence=[];
-	adds();
-	score=0;
-	scorehtml.innerHTML="Score: "+score;
-};
-function choose(choice){
-	if(at<sequence.length){return;}
-	if(choice!=sequence[on]){
-		score=0;
-		sequence=false;
-		starthtml.innerHTML="Start";
-	}
-	else{
-		on++;
-		if(on>=sequence.length){
-			adds();
-			score++;
-			if(score>high){high=score;}
-		}
-	}
-	scorehtml.innerHTML="Score: "+score;
-	highhtml.innerHTML="High Score: "+high;
-};
-setInterval(showNext, 300);
-</script>
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  <script>
+    var sequence = false;
+    var high = 0;
+    var score = 0;
+    var at = 0;
+    var on = 0;
+    var backnforth = 1;
+    var buf = "";
+    var scorehtml = document.getElementById("score");
+    var highhtml = document.getElementById("high");
+    var starthtml = document.getElementById("start");
+    var btns = [document.getElementById("tl"), document.getElementById("tr"), document.getElementById("bl"), document.getElementById("br")];
+    var colors = ["#FF3333", "33FF33", "3333FF", "FFFF33"];
 
-  ga('create', 'UA-104506442-1', 'auto');
-  ga('send', 'pageview');
+    function adds() {
+      sequence.push(Math.floor(Math.random() * 4));
+      at = 0;
+      on = 0;
+    };
 
-</script>
+    function showNext() {
+      backnforth *= -1;
+      if (!sequence) {
+        return;
+      }
+      if (backnforth == 1) {
+        if (at > 0 && at <= sequence.length) {
+          btns[sequence[at - 1]].style = buf;
+        }
+      } else {
+        if (at >= 0 && at < sequence.length) {
+          buf = btns[sequence[at]].style;
+          btns[sequence[at]].style = "background-color:" + colors[sequence[at]];
+        }
+        at++;
+      }
+    };
+
+    function start() {
+      if (!sequence) {
+        starthtml.innerHTML = "Restart";
+      }
+      sequence = [];
+      adds();
+      score = 0;
+      scorehtml.innerHTML = "Score: " + score;
+    };
+
+    function choose(choice) {
+      if (at < sequence.length) {
+        return;
+      }
+      if (choice != sequence[on]) {
+        score = 0;
+        sequence = false;
+        starthtml.innerHTML = "Start";
+      } else {
+        on++;
+        if (on >= sequence.length) {
+          adds();
+          score++;
+          if (score > high) {
+            high = score;
+          }
+        }
+      }
+      scorehtml.innerHTML = "Score: " + score;
+      highhtml.innerHTML = "High Score: " + high;
+    };
+    setInterval(showNext, 300);
+  </script>
+  <script>
+    (function(i, s, o, g, r, a, m) {
+      i['GoogleAnalyticsObject'] = r;
+      i[r] = i[r] || function() {
+        (i[r].q = i[r].q || []).push(arguments)
+      }, i[r].l = 1 * new Date();
+      a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0];
+      a.async = 1;
+      a.src = g;
+      m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-104506442-1', 'auto');
+    ga('send', 'pageview');
+  </script>
 </body>
+
 </html>
