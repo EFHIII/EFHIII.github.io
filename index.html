@@ -3,206 +3,280 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Projects</title>
-
+  <title>Edward Haas | Projects</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
   <meta property="og:title" content="Edward's Projects">
-  <meta property="og:description" content="Programs and games by Edward Haas">
-  <meta property="og:url" content="https://efhiii.github.io/">
-  <style>
-    div {
-      float: left;
-    }
-
-    body {
-      color: white;
-      background-color: rgb(50, 50, 50);
-      font-size: 120%;
-      text-align: center;
-    }
-
-    p {
-      text-align: left;
-      font-size: 120%;
-    }
-
-    img {
-      width: 300px;
-      height: 300px;
-
-    }
-
-    button {
-      outline: none;
-    }
-
-    footer {
-      position: fixed;
-      width: 100%;
-      background-color: black;
-      bottom: 0;
-      right: 0;
-    }
-
-    .container {
-      position: relative;
-      width: 300px;
-    }
-
-    .overlay {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 300px;
-      width: 300px;
-      opacity: 0;
-
-      background-color: #000000;
-    }
-
-    .container:hover .overlay {
-      opacity: 0.8;
-    }
-
-    .text {
-      color: white;
-      font-size: 50px;
-      position: absolute;
-      top: 5%;
-      left: 5%;
-    }
-
-    .searchBy {
-      border: none;
-      color: white;
-      font-size: 1.3em;
-      transition: 0.3s;
-    }
-
-    #title {
-      background-color: #44aacc;
-    }
-
-    #author {
-      background-color: #227788;
-    }
-
-    #title:hover {
-      background-color: #44aacc !important;
-    }
-
-    #author:hover {
-      background-color: #44aacc !important;
-    }
-  </style>
+  <meta property="og:description" content="Apps and games by Edward Haas">
+  <meta property="og:url" content="https://efhiii.github.io">
 </head>
 
 <body>
-  <h1>Projects</h1>
-  <p id="data">
-    <a href="https://chonger878.github.io/LiteratureReviewAPI/search/" target="_blank">
-      <div style="margin:3px;" class="container"><img src="imgs/Scholarly-Graphs.png" alt="Scholarly Graphs">
-        <div class="overlay">
-          <div class="text">Scholarly Graphs<br></div>
+  <h1 id="header">Edward Haas<span style="font-size: 18pt; vertical-align: middle; color: #505860"> @efhiii</span></h1>
+  <div id="gamesApps">
+    <div id="games">
+      <h1>Games</h1>
+      <div class='horizontalRule'></div>
+      <div class="project">
+        <div class="innerProject">
+          <div class="description">
+            <h1><a href="https://18-angle.github.io/golf" target="_blank">One Button Golf</a></h1>
+            <p>
+              A game where there's a single button for controlling several elements to manipulate a golf ball into a hole
+            </p>
+            <span class="with language">JavaScript</span>
+            <span class="with language">HTML Canvas</span>
+            <a href="https://howlerjs.com" target="_blank"><span class="with library">howler.js</span></a>
+            <a href="https://piqnt.com/planck.js" target="_blank"><span class="with library">planck.js</span></a>
+            <a href="https://showcase.codeday.org/project/ckkr0drwe55774310o9e8erqz63" target="_blank"><span class="with event">Virtual CodeDay Summer 2020</span></a>
+            <a href="https://showcase.codeday.org/project/ckkr0drwe55774310o9e8erqz63" target="_blank"><span class="with award">Best in Show</span></a>
+          </div>
+          <div class="screenshot">
+            <img src="imgs/golf.png" alt="One Button Golf">
+          </div>
         </div>
       </div>
-    </a>
-    <a href="https://18-angle.github.io/golf/" target="_blank">
-      <div style="margin:3px;" class="container"><img src="imgs/golf.png" alt="One Button Golf">
-        <div class="overlay">
-          <div class="text">One Button Golf<br></div>
+      <div class='horizontalRule'></div>
+      <div class="project">
+        <div class="innerProject">
+          <div class="description">
+            <h1><a href="https://uwuhero.github.io" target="_blank">UwU Hero</a></h1>
+            <p>
+              A Rhythm Game where you can import any MIDI file and play a nice chart of that song
+            </p>
+            <span class="with language">JavaScript</span>
+            <span class="with language">HTML Canvas</span>
+            <span class="with language">Gamepad API</span>
+            <a href="https://howlerjs.com" target="_blank"><span class="with library">howler.js</span></a>
+            <a href="https://tonejs.github.io" target="_blank"><span class="with library">Tone.js</span></a>
+            <a href="https://surikov.github.io/webaudiofont" target="_blank"><span class="with library">webaudiofont</span></a>
+            <a href="https://www.npmjs.com/package/crypto-js" target="_blank"><span class="with library">Crypto-js</span></a>
+            <a href="https://showcase.codeday.org/project/ckpszddvy29666310qu78b7y3qz" target="_blank"><span class="with event">Virtual CodeDay June 2021</span></a>
+          </div>
+          <div class="screenshot">
+            <img src="imgs/uwu-hero.png" alt="UwU Hero">
+          </div>
         </div>
       </div>
-    </a>
-    <a href="https://uwuhero.github.io/" target="_blank">
-      <div style="margin:3px;" class="container"><img src="imgs/uwu-hero.png" alt="UwU Hero">
-        <div class="overlay">
-          <div class="text">UwU Hero<br></div>
+      <div class='horizontalRule'></div>
+      <div class="project">
+        <div class="innerProject">
+          <div class="description">
+            <h1><a href="https://efhiii.github.io/shapush" target="_blank">Shapush</a></h1>
+            <p>
+              A very challenging Sokoban-like puzzle game
+            </p>
+            <span class="with language">JavaScript</span>
+            <span class="with language">HTML Canvas</span>
+          </div>
+          <div class="screenshot">
+            <img src="imgs/shapush.png" alt="Shapush">
+          </div>
         </div>
       </div>
-    </a>
-    <a href="https://thecrystalize.github.io/Net3arth/" target="_blank">
-      <div style="margin:3px;" class="container"><img src="imgs/net3arth.png" alt="Net3arth">
-        <div class="overlay">
-          <div class="text">Net3arth<br></div>
+      <div class='horizontalRule'></div>
+      <div class="project">
+        <div class="innerProject">
+          <div class="description">
+            <h1><a href="https://efhiii.github.io/shapush/Blocks" target="_blank">Blocks</a></h1>
+            <p>
+              A small puzzle game which is an experimental, more mobile-friendly, simplification of Shapush
+            </p>
+            <span class="with language">JavaScript</span>
+            <span class="with language">HTML Canvas</span>
+            <a href="https://onehourgamejam.com/?page=jam&jam=299" target="_blank"><span class="with event">One Hour Game Jam #299</span></a>
+          </div>
+          <div class="screenshot">
+            <img src="imgs/blocks.png" alt="Blocks">
+          </div>
         </div>
       </div>
-    </a>
-    <a href="https://discord.gg/WYYYNjM" target="_blank">
-      <div style="margin:3px;" class="container"><img src="imgs/gambit.png" alt="GamBit">
-        <div class="overlay">
-          <div class="text">GamBit Discord bot<br></div>
+      <div class='horizontalRule'></div>
+      <div class="project">
+        <div class="innerProject">
+          <div class="description">
+            <h1><a href="https://efhiii.github.io/TDP" target="_blank">Top Down Platformer</a></h1>
+            <p>
+              A 3D platforming game with a top-down perspective
+            </p>
+            <span class="with language">JavaScript</span>
+            <span class="with language">HTML Canvas</span>
+            <a href="https://p5js.org/" target="_blank"><span class="with library">P5.js</span></a>
+          </div>
+          <div class="screenshot">
+            <img src="imgs/TDP.png" alt="Top Down Platformer">
+          </div>
         </div>
       </div>
-    </a>
-    <a href="https://efhiii.github.io/shapush/" target="_blank">
-      <div style="margin:3px;" class="container"><img src="imgs/shapush.png" alt="Shapush">
-        <div class="overlay">
-          <div class="text">Shapush<br></div>
+      <div class='horizontalRule'></div>
+    </div>
+    <div id="apps">
+      <h1>Apps</h1>
+      <div class='horizontalRule'></div>
+      <div class="project">
+        <div class="innerProject">
+          <div class="description">
+            <h1><a href="https://chonger878.github.io/LiteratureReviewAPI/search" target="_blank">Scholarly Graphs</a></h1>
+            <p>
+              Given a search query, creates a graph of related scholarly articles' citations using data from Google Scholar
+            </p>
+            <span class="with language">JavaScript</span>
+            <span class="with language">HTML5/CSS3</span>
+            <span class="with library">Chrome extension</span>
+            <a href="https://www.electronjs.org" target="_blank"><span class="with library">Electron</span></a>
+            <a href="http://viz-js.com" target="_blank"><span class="with library">graphviz</span></a>
+            <a href="https://showcase.codeday.org/project/ckkh1pg1j20196311o571xk0p46" target="_blank"><span class="with event">CodeDay Labs 2020</span></a>
+            <a href="https://blog.codeday.org/staff-favorite-projects-from-codeday-labs-2020" target="_blank"><span class="with award">Staff Favorite</span></a>
+          </div>
+          <div class="screenshot">
+            <img src="imgs/Scholarly-Graphs.png" alt="Scholarly Graphs">
+          </div>
         </div>
       </div>
-    </a>
-    <a href="https://efhiii.github.io/shapush/Blocks/" target="_blank">
-      <div style="margin:3px;" class="container"><img src="imgs/blocks.png" alt="Blocks">
-        <div class="overlay">
-          <div class="text">Blocks<br></div>
+      <div class="horizontalRule"></div>
+      <div class="project">
+        <div class="innerProject">
+          <div class="description">
+            <a href="https://github.com/EFHIII/midi-ch" target="_blank"><h1>MIDI-CH</h1></a>
+            <p>
+              An auto-charter that converts any MIDI file into a fairly accurately charted Clone Hero chart file
+            </p>
+            <span class="with language">JavaScript</span>
+            <span class="with language">HTML Canvas</span>
+            <a href="https://tonejs.github.io" target="_blank"><span class="with library">Tone.js</span></a>
+          </div>
+          <div class="screenshot">
+            <img src="imgs/midi-ch.png" alt="MIDI-CH">
+          </div>
         </div>
       </div>
-    </a>
-    <a href="https://efhiii.github.io/TDP/" target="_blank">
-      <div style="margin:3px;" class="container"><img src="imgs/TDP.png" alt="Top Down Platformer">
-        <div class="overlay">
-          <div class="text">Top Down Platformer<br></div>
+      <div class="horizontalRule"></div>
+      <div class="project">
+        <div class="innerProject">
+          <div class="description">
+            <h1><a href="https://github.com/EFHIII/Shapush-Puzzle-Generator" target="_blank">Shapush Puzzle Solver</a></h1>
+            <p>
+              A brute force breadth-first-search solver for Shapush puzzles
+            </p>
+            <span class="with language">C++</span>
+            <span class="with language">CUDA</span>
+            <span class="with technique">Multithreading</span>
+            <a href="https://showcase.codeday.org/project/ckiawi8pt756610rvch6bnrsk" target="_blank"><span class="with event">CodeDay December 2020</span></a>
+            <a href="https://showcase.codeday.org/project/ckiawi8pt756610rvch6bnrsk" target="_blank"><span class="with award">Journal of Computer Science Award</span></a>
+          </div>
+          <div class="screenshot">
+            <img src="imgs/shapush-solver.png" alt="Shapush solver">
+          </div>
         </div>
       </div>
-    </a>
-    <a href="https://efhiii.github.io/solar-system/" target="_blank">
-      <div style="margin:3px;" class="container"><img src="imgs/solar-system.png" alt="Solar System">
-        <div class="overlay">
-          <div class="text">Solar System<br></div>
+      <div class="horizontalRule"></div>
+      <div class="project">
+        <div class="innerProject">
+          <div class="description">
+            <h1><a href="https://thecrystalize.github.io/Net3arth" target="_blank">Net3arth</a></h1>
+            <p>
+              A featureful Chaos-based web fractal renderer complete with a programming interface dubbed 3arthLang
+            </p>
+            <span class="with language">JavaScript</span>
+            <span class="with language">HTML5/CSS3</span>
+            <span class="with language">Web Workers</span>
+            <span class="with technique">Multithreading</span>
+            <a href="https://ace.c9.io" target="_blank"><span class="with library">Ace.js</span></a>
+          </div>
+          <div class="screenshot">
+            <img src="imgs/net3arth.png" alt="Net3arth">
+          </div>
         </div>
       </div>
-    </a>
-    <a href="https://github.com/EFHIII/midi-ch/" target="_blank">
-      <div style="margin:3px;" class="container"><img src="imgs/midi-ch.png" alt="MIDI-CH">
-        <div class="overlay">
-          <div class="text">MIDI to Clone Hero<br></div>
+      <div class="horizontalRule"></div>
+      <div class="project">
+        <div class="innerProject">
+          <div class="description">
+            <a href="games/befunge" target="_blank"><h1>Befunge-98 Interpreter</h1></a>
+            <p>
+              A Fully compliant Befunge-98 interpreter with an added HTML Canvas API Fingerprint
+            </p>
+            <span class="with language">JavaScript</span>
+            <span class="with language">HTML Canvas</span>
+            <a href="https://esolangs.org/wiki/Funge-98" target="_blank"><span class="with language">Beunge-98</span></a>
+          </div>
+          <div class="screenshot">
+            <img src="imgs/befunge.png" alt="Befunge-98">
+          </div>
         </div>
       </div>
-    </a>
-    <a href="games/befunge" target="_blank">
-      <div style="margin:3px;" class="container"><img src="imgs/befunge.png" alt="Befunge 98">
-        <div class="overlay">
-          <div class="text">Befunge 98<br></div>
+      <div class="horizontalRule"></div>
+      <div class="project">
+        <div class="innerProject">
+          <div class="description">
+            <a href="https://efhiii.github.io/solar-system" target="_blank"><h1>Solar System</h1></a>
+            <p>
+              A Newtonian physics simulation of the solar system
+            </p>
+            <span class="with language">JavaScript</span>
+            <span class="with language">HTML Canvas</span>
+          </div>
+          <div class="screenshot">
+            <img src="imgs/solar-system.png" alt="Solar System">
+          </div>
         </div>
       </div>
-    </a>
-    <a href="https://efhiii.github.io/ASCII" target="_blank">
-      <div style="margin:3px;" class="container"><img src="imgs/ASCII.png" alt="ASCII">
-        <div class="overlay">
-          <div class="text">ASCII Art Gen<br></div>
+      <div class="horizontalRule"></div>
+      <div class="project">
+        <div class="innerProject">
+          <div class="description">
+            <h1>GamBit Discord Bot</h1>
+            <p>
+              A (now retired) Discord Bot that was in >900 servers with >13,000 registered users
+            </p>
+            <span class="with language">Node.js</span>
+            <a href="https://discord.js.org/#" target="_blank"><span class="with library">Discord.js</span></a>
+          </div>
+          <div class="screenshot">
+            <img src="imgs/gambit.png" alt="GamBit">
+          </div>
         </div>
       </div>
-    </a>
-    <a href="games/connect-4" target="_blank">
-      <div style="margin:3px;" class="container"><img src="imgs/connect-4.png" alt="Connect 4">
-        <div class="overlay">
-          <div class="text">Connect 4<br></div>
+      <div class="horizontalRule"></div>
+      <div class="project">
+        <div class="innerProject">
+          <div class="description">
+            <a href="https://efhiii.github.io/ASCII" target="_blank"><h1>ASCII Art Generatpr</h1></a>
+            <p>
+              Given an image file or image URL, converts the image into ASCII art
+            </p>
+            <span class="with language">JavaScript</span>
+          </div>
+          <div class="screenshot">
+            <img src="imgs/ASCII.png" alt="ASCII art">
+          </div>
         </div>
       </div>
-    </a>
-    <!--a href="games/connect-4" target="_blank"-->
-      <div style="margin:3px;" class="container"><img src="imgs/ray-tracer.png" alt="Ray tracer">
-        <div class="overlay">
-          <div class="text">Ray tracer<br></div>
+      <div class="horizontalRule"></div>
+      <div class="project">
+        <div class="innerProject">
+          <div class="description">
+            <h1>Ray Tracer</h1>
+            <p>
+              A Basic Ray Tracer made with CUDA for some fractal experiments
+            </p>
+            <span class="with language">C++</span>
+            <span class="with language">CUDA</span>
+            <span class="with technique">Multithreading</span>
+          </div>
+          <div class="screenshot">
+            <img src="imgs/ray-tracer.png" alt="Ray Tracer">
+          </div>
         </div>
       </div>
-    <!--/a-->
-  </p>
+      <div class="horizontalRule"></div>
+    </div>
+  </div>
   <script>
     (function(i, s, o, g, r, a, m) {
-      i['GoogleAnalyticsObject'] = r;
+      i["GoogleAnalyticsObject"] = r;
       i[r] = i[r] || function() {
         (i[r].q = i[r].q || []).push(arguments)
       }, i[r].l = 1 * new Date();
@@ -211,10 +285,10 @@
       a.async = 1;
       a.src = g;
       m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+    })(window, document, "script", "https://www.google-analytics.com/analytics.js", "ga");
 
-    ga('create', 'UA-104506442-1', 'auto');
-    ga('send', 'pageview');
+    ga("create", "UA-104506442-1", "auto");
+    ga("send", "pageview");
   </script>
 </body>
 

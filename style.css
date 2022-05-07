@@ -1,0 +1,135 @@
+body {
+  margin: 0px;
+  color: rgb(110, 120, 130);
+  background-color: rgb(32, 36, 40);
+  font-size: 120%;
+  text-align: center;
+  font-family: 'Fira Code', monospace;
+}
+
+h1, p {
+  margin: 0;
+}
+
+p {
+  text-align: left;
+}
+
+td img {
+  display: block;
+}
+
+a {
+  color: #00838f;
+}
+
+a:hover {
+  transition: 0.5s;
+  color: #00acc1;
+}
+
+#header {
+  position: fixed;
+  background-color: rgb(32, 36, 40);
+  width: 100%;
+  text-align: left;
+  border-bottom: 1px solid rgb(55, 60, 65);
+}
+
+#gamesApps {
+  padding-top: 50px;
+  height: calc(100% - 50px);
+}
+
+#games {
+  width: 50%;
+  float: left;
+  box-shadow: 1px 0px rgb(110, 120, 130);
+}
+
+#apps {
+  width: 50%;
+  display: table;
+  float: right;
+  box-shadow: -1px 0px rgb(110, 120, 130);
+}
+
+
+.project {
+  margin: 0.5em;
+  display: table;
+  width: calc(100% - 2px - 1em);
+}
+
+.innerProject {
+  display: table-row;
+  width: 100%;
+}
+
+.innerProject div {
+  vertical-align: middle;
+}
+
+
+.screenshot {
+  display: table-cell;
+}
+
+.screenshot img {
+  width: 150px;
+  height: 150px;
+  float: right;
+}
+
+
+.description {
+  display: table-cell;
+}
+
+.description h1 {
+  text-align: left;
+  font-size: 1.2em;
+}
+
+.description p {
+  text-align: left;
+  margin-right: 0.5em;
+}
+
+.horizontalRule {
+  border-bottom: 1px solid rgb(55, 60, 65);
+  width: 100%;
+}
+
+
+.with {
+  float: left;
+  font-size: 0.5em;
+  color: white;
+  padding: 0.25em;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  border-radius: 0.5em;
+  margin: 0.5em;
+}
+
+.language {
+  background-color: #00695c;
+}
+
+.library {
+  background-color: #4527a0;
+}
+
+.technique {
+  background-color: #e65100;
+}
+.event {
+  background-color: #0277bd;
+}
+
+.award {
+  background-color: #c0ca33;
+  color: black;
+  text-decoration: underline;
+}
