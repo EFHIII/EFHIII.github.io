@@ -31,17 +31,17 @@ The DRAW fingerprint is unique to this interpreter, and will (most likely) not w
 | E | Ellipse | Draws an ellipse. |
 | R | Rectangle | Draws a rectangle. |
 | P | Point | Draws a point. |
-| O | Shape | Not implamented. |
+| O | Shape | Draws a shape described by the stack. |
 | T | Transform | Applies a transformation to the transformation matrix. |
 | M | Matrix | Push/Pops the Matrix stack. |
-| B | Background | Draws an arc. |
+| B | Background | Fills the canvas with the fill color. |
 | F | Fill | Changes the shape fill color. |
 | S | Stroke | Changes the shape stroke color. |
 | W | Width | Pushes the canvas width. |
 | H | Height | Pushes the canvas height. |
 | U | Mouse | Pushes mouse info. |
 | L | LMouse | Pushes mouse info from the last frame. |
-| K | Keyboard | Not implamented. |
+| K | Keyboard | Pushes keyboard info. |
 
 ### External Links
 [esolangs.org/wiki/Funge-98](https://esolangs.org/wiki/Funge-98)
