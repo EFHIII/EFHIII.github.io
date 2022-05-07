@@ -42,18 +42,50 @@ a:hover {
 }
 
 #games {
-  width: 50%;
+  width: 100%;
   float: left;
-  box-shadow: 1px 0px rgb(110, 120, 130);
 }
 
 #apps {
-  width: 50%;
-  display: table;
-  float: right;
-  box-shadow: -1px 0px rgb(110, 120, 130);
+  width: 100%;
+  float: left;
 }
 
+.screenshot img {
+  width: 20vw;
+  height: 20vw;
+  float: right;
+}
+
+.description {
+  display: table-cell;
+  font-size: 0.85em;
+}
+
+@media only screen and (min-width: 1000px) {
+  #games {
+    width: 50%;
+    float: left;
+    box-shadow: 1px 0px rgb(110, 120, 130);
+  }
+
+  #apps {
+    width: 50%;
+    float: right;
+    box-shadow: -1px 0px rgb(110, 120, 130);
+  }
+
+  .screenshot img {
+    width: 150px;
+    height: 150px;
+    float: right;
+  }
+
+  .description {
+    display: table-cell;
+    font-size: 1em;
+  }
+}
 
 .project {
   margin: 0.5em;
@@ -70,19 +102,7 @@ a:hover {
   vertical-align: middle;
 }
 
-
 .screenshot {
-  display: table-cell;
-}
-
-.screenshot img {
-  width: 150px;
-  height: 150px;
-  float: right;
-}
-
-
-.description {
   display: table-cell;
 }
 
@@ -100,7 +120,6 @@ a:hover {
   border-bottom: 1px solid rgb(55, 60, 65);
   width: 100%;
 }
-
 
 .with {
   float: left;
@@ -124,6 +143,7 @@ a:hover {
 .technique {
   background-color: #e65100;
 }
+
 .event {
   background-color: #0277bd;
 }
