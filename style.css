@@ -57,6 +57,12 @@ a:hover {
   float: right;
 }
 
+.certs img {
+  height: 20vw;
+  float: center;
+  margin: 1em;
+}
+
 .description {
   display: table-cell;
   font-size: 0.85em;
@@ -79,6 +85,12 @@ a:hover {
     width: 150px;
     height: 150px;
     float: right;
+  }
+
+  .certs img {
+    height: 150px;
+    float: center;
+    margin: 1em;
   }
 
   .description {
