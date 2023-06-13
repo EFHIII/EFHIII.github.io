@@ -46,6 +46,11 @@ a:hover {
   float: left;
 }
 
+#articles {
+  width: 100%;
+  float: left;
+}
+
 #apps {
   width: 100%;
   float: left;
@@ -76,6 +81,12 @@ a:hover {
   }
 
   #apps {
+    width: 50%;
+    float: right;
+    box-shadow: -1px 0px rgb(110, 120, 130);
+  }
+
+  #articles {
     width: 50%;
     float: right;
     box-shadow: -1px 0px rgb(110, 120, 130);
